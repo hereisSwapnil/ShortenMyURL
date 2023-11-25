@@ -21,7 +21,7 @@
    npm install
    ```
 
-3. Set up your environment variables.
+3. Set up your environment variables ( MONGO_URI ).
 
 4. Run the application:
 
