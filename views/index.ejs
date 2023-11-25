@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortenMyUrl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #003049;">
+    <header class="d-flex justify-content-center py-3 mb-4 border-bottom">
+        <a href="/"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto m-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4" style="color: antiquewhite;">Shorten My Url</span>
+        </a>
+    </header>
+    <div style="display: flex; justify-content: center; flex-direction: column;">
+        <div class="input-group mb-3" style="width: fit-content; margin: auto; margin-top: 90px;">
+            <form action="/shortenUrl" method="post"
+                style="display: flex; justify-content: center; flex-direction: column;">
+                <input type="text" class="form-control" style="width: 60vw;" placeholder="Enter the url"
+                    name="originalUrl" required>
+                <button type="submit" class="btn btn-primary" style="margin: auto; margin-top: 30px;">Shorten</button>
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped-columns table-dark" style="margin: auto; margin-top: 50px; width: 80vw;">
+        <thead>
+            <th>Original Url</th>
+            <th>Shorten Url</th>
+            <th>Clicks</th>
+        </thead>
+        <tbody>
+            <% data.forEach(urlData=> { %>
+                <tr>
+                    <td>
+                        <%= urlData.originalUrl %>
+                    </td>
+                    <td>
+                        <a href="http://localhost:3000/<%= urlData.shortenUrl %>" target="_blank">
+                            <%= urlData.shortenUrl %>
+                        </a>
+                    </td>
+                    <td>
+                        <%= urlData.clicks %>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
